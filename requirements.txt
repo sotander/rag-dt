@@ -1,0 +1,14 @@
+accelerate
+bitsandbytes
+datasets
+faiss-cpu
+gdown
+ipywidgets
+numpy
+pandas
+rank-bm25
+scikit-learn
+sentence-transformers
+tqdm
+
+git+https://github.com/huggingface/transformers.git
