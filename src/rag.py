@@ -4,6 +4,7 @@ import torch
 
 from .retrieval import retrieve_relevant_chunks
 from .prompts import build_messages
+from .reranker import rerank_chunks
 
 
 def fit_context_into_budget(
@@ -49,6 +50,7 @@ def ask(
     store,
     model,
     tokenizer,
+    reranker,
     k=10,
     max_new_tokens=256,
     max_input_tokens=6000,
@@ -56,7 +58,14 @@ def ask(
     chunks = retrieve_relevant_chunks(
         query,
         store,
-        k,
+        k=50,
+    )
+    
+    chunks = rerank_chunks(
+        query,
+        chunks,
+        reranker,
+        top_n=10,
     )
 
     chunks = fit_context_into_budget(

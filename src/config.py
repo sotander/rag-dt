@@ -5,7 +5,7 @@ import torch
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 EMBEDDING_MODEL_NAME = "BAAI/bge-small-en-v1.5"
-
+RERANKER_MODEL_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 LLM_MODEL_NAME = "google/gemma-4-E4B-it"
 
 OVERLAP = 64
