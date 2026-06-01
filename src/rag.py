@@ -16,7 +16,6 @@ def fit_context_into_budget(
     selected = []
 
     for chunk in chunks:
-
         candidate = selected + [chunk]
 
         messages = build_messages(
@@ -54,18 +53,20 @@ def ask(
     k=10,
     max_new_tokens=256,
     max_input_tokens=6000,
+    top_k=20,
+    rerank_k=5,
 ):
     chunks = retrieve_relevant_chunks(
         query,
         store,
-        k=50,
+        k=top_k,
     )
     
     chunks = rerank_chunks(
         query,
         chunks,
         reranker,
-        top_n=10,
+        top_n=rerank_k,
     )
 
     chunks = fit_context_into_budget(
@@ -92,7 +93,6 @@ def ask(
     ).to(model.device)
 
     with torch.no_grad():
-
         output_ids = model.generate(
             **inputs,
             max_new_tokens=max_new_tokens,
