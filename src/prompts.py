@@ -7,6 +7,7 @@ Rules:
 - Use ONLY information found in the provided context.
 - Cite source document names when possible.
 - Do not invent facts.
+- When mentioning a title, performer, organization, venue, or named entity, try to fix the capitalization if needed.
 - If the answer is not present in the context, respond exactly:
 
 I cannot find the answer in the provided documents.
