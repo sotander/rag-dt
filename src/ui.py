@@ -1,6 +1,6 @@
 import ipywidgets as widgets
 from IPython.display import display, Markdown
-from src.rag import ask
+from .rag import ask
 
 
 class RagUI:
