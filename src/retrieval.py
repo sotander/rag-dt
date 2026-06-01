@@ -8,6 +8,17 @@ def retrieve_relevant_chunks(
     store,
     k=10,
 ):
+    """Retrieve the top K most similar text chunks from the vector store index.
+
+    Args:
+        query (str): The user query to search for.
+        store: The vector store object containing the embedding model, index, and metadata.
+        k (int, optional): The number of closest chunks to retrieve. Defaults to 10.
+
+    Returns:
+        list of dict: A list of dicts containing the chunk text, document source,
+        chunk ID, and similarity score, ordered by relevance.
+    """
     query_embedding = store.embedding_model.encode(
         [query],
         convert_to_numpy=True,

@@ -8,7 +8,6 @@ from .chunking import chunk_text_by_tokens
 
 
 class FaissStore:
-
     def __init__(
         self,
         embedding_model,
@@ -34,6 +33,11 @@ class FaissStore:
         file_path,
         filename,
     ):
+        """Read, chunk, embed, and index a single text file into the FAISS store.
+        Args:
+            file_path (str): Path to the target text file.
+            filename (str): Name of the file to store in the chunk metadata.
+        """
         with open(
             file_path,
             "r",

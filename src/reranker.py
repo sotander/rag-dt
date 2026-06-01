@@ -16,6 +16,17 @@ def rerank_chunks(
     reranker,
     top_n=5,
 ):
+    """Re-rank retrieved text chunks using a cross-encoder and return the top N.
+
+    Args:
+        query (str): The user query to score against the chunks.
+        retrieved_chunks (list of dict): Dicts containing a "text" key.
+        reranker: The re-ranking model with a `predict` method.
+        top_n (int, optional): Number of top-scoring chunks to return. Defaults to 5.
+
+    Returns:
+        list of dict: The top_n highest-scoring chunks, sorted descending.
+    """
     pairs = [
         (query, chunk["text"])
         for chunk in retrieved_chunks

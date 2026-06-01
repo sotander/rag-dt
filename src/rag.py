@@ -13,6 +13,17 @@ def fit_context_into_budget(
     tokenizer,
     max_input_tokens,
 ):
+    """Select the maximum number of text chunks that fit within a token budget.
+
+    Args:
+        query (str): The user query to include in the prompt.
+        chunks (list of str): Ordered text chunks to evaluate.
+        tokenizer: The tokenizer with `apply_chat_template` capability.
+        max_input_tokens (int): The strict maximum token limit for the prompt.
+
+    Returns:
+        list of str: Chunks that fit within the budget, preserving order.
+    """
     selected = []
 
     for chunk in chunks:
@@ -56,6 +67,23 @@ def ask(
     top_k=20,
     rerank_k=5,
 ):
+    """Execute a full RAG pipeline to retrieve context and generate an answer.
+
+    Args:
+        query (str): The user's question.
+        store: The vector store for initial chunk retrieval.
+        model: The LLM used for generation.
+        tokenizer: The tokenizer for prompt construction and token counting.
+        reranker: The model used to re-rank retrieved chunks.
+        k (int, optional): Unused legacy parameter. Defaults to 10.
+        max_new_tokens (int, optional): Max tokens to generate. Defaults to 256.
+        max_input_tokens (int, optional): Max context window budget. Defaults to 6000.
+        top_k (int, optional): Chunks to fetch initially. Defaults to 20.
+        rerank_k (int, optional): Chunks to keep after re-ranking. Defaults to 5.
+
+    Returns:
+        str: The generated text response from the model.
+    """
     chunks = retrieve_relevant_chunks(
         query,
         store,
