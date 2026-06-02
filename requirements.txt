@@ -9,6 +9,6 @@ pandas
 rank-bm25
 scikit-learn
 sentence-transformers
+torch
 tqdm
-
-git+https://github.com/huggingface/transformers.git
+transformers>=4.57
