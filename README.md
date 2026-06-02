@@ -3,9 +3,9 @@
 ## 1. Objective
 This project implements a Retrieval-Augmented Generation (RAG) system for question answering over a collection of Deutsche Telekom press releases. The system retrieves relevant passages from the document collection and uses them as evidence for grounded answer generation. An LLM is instructed to answer exclusively from the retrieved context, provide source attribution, and indicate when the answer cannot be found in the available documents.
 
-The solution **is deployed** in Google Colab with a T4 GPU. Clicking "Run All" will load the data, model weights, produce a test output and offer a clickable UI built on `ipwidgets`. Allow a few minutes for the process to finish, especially the model weight loading. Access is through: [this link](https://colab.research.google.com/drive/1MwULbEIZMAoLYzi69a035WB6SyVNOtqL?usp=sharing). 
+The solution **is deployed** in Google Colab with a T4 GPU. Clicking "Run All" will load the data, model weights, produce a test output and offer a clickable UI built on `ipwidgets`. Allow a few minutes for the process to finish, especially the model weight loading. Access is through: [this link](https://colab.research.google.com/drive/1MwULbEIZMAoLYzi69a035WB6SyVNOtqL?usp=sharing). Note that you need to be logged in to a Google account; other that that, the notebok doesn't require any API keys and while it might ask for the HF token, it doesn't require it.
 
-If you want to deploy this on your own HW, use the `main.py` script but you will have to figure out your environment for your HW. While `requirements.txt` contains the dependencies, the CUDA version is depended on your particular GPU.
+If you want to deploy this on your own HW, use the `main.py` script but you will have to figure out your environment for your HW. While `requirements.txt` contains the dependencies, the CUDA version depends on your particular GPU.
 
 ## 2. Architecture
 The system follows a two-stage retrieval architecture consisting of dense retrieval and neural reranking.
