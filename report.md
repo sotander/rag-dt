@@ -1,3 +1,5 @@
+# RAG-DT: Retrieval-Augmented Generation for Deutsche Telekom Press Releases
+
 ## 1. Objective
 This project implements a Retrieval-Augmented Generation (RAG) system for question answering over a collection of Deutsche Telekom press releases. The system retrieves relevant passages from the document collection and uses them as evidence for grounded answer generation. An LLM is instructed to answer exclusively from the retrieved context, provide source attribution, and indicate when the answer cannot be found in the available documents.
 
